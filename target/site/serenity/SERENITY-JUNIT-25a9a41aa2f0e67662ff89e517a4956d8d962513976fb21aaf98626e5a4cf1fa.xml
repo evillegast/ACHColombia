@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Realizar carga exitosa de archivo nacham banco Itau y revisar que cargue correctamente" skipped="0" tests="1" time="13.36" timestamp="2021-11-19 02:34:42"><testcase name="Realizar carga exitosa archivo nacham"><error type="java.lang.NullPointerException"/><system-err>null&#13;
+com.achcolombia.pruebas.utils.ExcelDatos.obtenerDatos(ExcelDatos.java:21)&#13;
+com.achcolombia.pruebas.steps.LoginPaginaPrincipalStep.ingresarUsuario(LoginPaginaPrincipalStep.java:30)&#13;
+com.achcolombia.pruebas.stepdefinitions.LoginPaginaPrincipalStepDefinitions.ingresaSusCredenciales(LoginPaginaPrincipalStepDefinitions.java:27)&#13;
+✽.ingresa sus credenciales(src/test/resources/loginAchColombia/CargaExitosaItau.feature:7)&#13;
+</system-err></testcase></testsuite>

@@ -1,0 +1,1137 @@
+<html lang="en" ng-app="VolpayApp" class="no-js ng-scope" ng-controller="volpayAppController" style="background-size: cover;"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11">
+
+    <!-- ngIf: !configData -->
+    <!-- ngIf: configData --><title ng-if="configData" class="ng-binding ng-scope">VolPay</title><!-- end ngIf: configData -->
+
+    <!-- ngIf: configData.ThemeName --><link rel="shortcut icon" ng-href="themes/volante/favicon.png" ng-if="configData.ThemeName" class="ng-scope" href="themes/volante/favicon.png"><!-- end ngIf: configData.ThemeName -->
+    <!-- ngIf: !configData.ThemeName -->
+    <link rel="stylesheet" href="lib/angular-ui-switch/angular-ui-switch.min.css">
+
+    <!-- <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="lib/bootstrap/bootstrap-v3.4.0.min.css"> -->
+    <link rel="stylesheet" href="lib/bootstrap-4.6.0/css/bootstrap.min.css"> 
+
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap-combined.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-toggle-master/css/bootstrap-toggle.min.css">
+
+    <link rel="stylesheet" href="lib/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-daterangepicker/daterangepicker-bs3.css">
+    <link rel="stylesheet" href="lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+
+    <link rel="stylesheet" href="lib/uniform/css/uniform.default.css">
+
+    <!-- <link rel="stylesheet" href="lib/jquery-ui/jquery-ui.css"> -->
+    <!-- latest jquery UI css-->
+    <link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.css">
+    
+    <link rel="stylesheet" href="lib/d3charts/nv.d3.css">
+
+    <link rel="stylesheet" href="templates/volpay/css/VPlayoutcss.css">
+    <link rel="stylesheet" href="templates/volpay/css/custom.css">
+    <link rel="stylesheet" href="themes/styles/volante.css" id="themeColor">
+    <link rel="stylesheet" href="themes/volante/styles.css" id="footerCss">
+
+    <link rel="stylesheet" href="templates/volpay/css/animateClass.css">
+    <link rel="stylesheet" href="templates/volpay/css/printStyles.css">
+    <link rel="stylesheet" href="templates/volpay/css/dashboardStyles.css">
+
+    <link rel="stylesheet" href="lib/js-beautify/web/third-party/codemirror/lib/codemirror.css">
+
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/ionicons-2.0.1/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="lib/select2_angular/select2.min.css">
+    <!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
+    <style>
+        #loaderDiv {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1100;
+            background-color: white;
+            opacity: .2;
+            
+        }
+        
+        .ajax-loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -32px;
+            /* -1 * image width / 2 */
+            margin-top: -32px;
+            /* -1 * image height / 2 */
+            display: block;
+        }
+    </style><script src="templates/login/VPloginCtrl.js" async=""></script><link type="text/css" rel="stylesheet" href="templates/sidebar/VPsidebar.css"><link type="text/css" rel="stylesheet" href="templates/header/VPheader.css"><script src="templates/sidebar/VPsidebarCtrl.js" async=""></script><script src="templates/header/VPheaderCtrl.js" async=""></script><script src="modules/appCtrl.js" async=""></script><script src="templates/volpay/js/VPdirectivejs.js" async=""></script><script src="templates/web-form/webFormCtrl.js" async=""></script><script src="modules/homeprofile/homeprofileCtrl.js" async=""></script>
+</head>
+
+<body class="hold-transition sidebar-mini" style="background-color: rgb(242, 242, 242);">
+    <div pre-loader-circle="" class="pre-loader-circle hide">
+        <!-- <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div> -->
+    </div>
+    <!-- For BNYM data loading issue implementaion -->
+    <div id="loaderDiv" loader="" style="display: none;">
+        <img src="themes/icons/bnym/Loading.svg" class="ajax-loader">
+    </div>
+    <!-- uiView: --><div ui-view="" class="ng-scope"><div class="wrapper ng-scope">
+
+    <!-- <div data-ng-include="'templates/header/VPheaderFoDevice.html'" data-ng-controller="headerCtrl" class="main-header" ng-if="!iframeFlag">
+   </div> -->
+    <!-- ngIf: !iframeFlag --><!-- ngInclude: 'templates/header/VPheaderFoDevice.html' --><div data-ng-include="'templates/header/VPheaderFoDevice.html'" data-ng-controller="headerCtrl" class="main-header headForDevice ng-scope" ng-if="!iframeFlag"><header class="ng-scope">
+    <div class="row">
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="col-xs-9">
+                <div class="appLogo">
+                    <img ng-src="themes/volante/logo.png" alt="logo" class="logo-default" src="themes/volante/logo.png">
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <a class="sidebar-toggle headerSideToggle" data-toggle="offcanvas" role="button" data-ng-click="sideBar(1);">
+                    <i class="fa fa-bars" aria-hidden="true" style="border: 5px solid #5e6b7b;font-size:14px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script class="ng-scope">
+    $(function() {
+        $('.scrollDiv').slimScroll({
+            color: '#ddd',
+            size: '7px',
+            height: '300px',
+            alwaysVisible: true
+        });
+    });
+    /*if (document.documentElement.clientWidth < 767 && document.documentElement.clientWidth >= 360) {
+		$(".dropdownPosition1").css("left","-75px");
+		$(".dropdownPosition2").css("left","-110px");
+		$(".dropdownPosition3").css("left","-145px");
+	}
+	else if(document.documentElement.clientWidth < 360){
+		$(".dropdownPosition1").css("left","-38px");
+		$(".dropdownPosition2").css("left","-88px");
+		$(".dropdownPosition3").css("left","-135px");
+	}
+	else if(document.documentElement.clientWidth > 767 && document.documentElement.clientWidth <= 1200){
+		$(".dropdownPosition1").css("left","-140px");
+		$(".dropdownPosition2").css("left","-125px");
+		$(".dropdownPosition3").css("left","-150px");
+	}*/
+</script></div><!-- end ngIf: !iframeFlag -->
+
+    <!-- ngIf: !iframeFlag && !pwSet --><!-- ngInclude: 'templates/sidebar/VPsidebar.html' --><div data-ng-include="'templates/sidebar/VPsidebar.html'" data-ng-controller="sidebarController" class="main-sidebar ng-scope" ng-if="!iframeFlag &amp;&amp; !pwSet"><style class="ng-scope">
+    .coretheme {
+        margin-left: 7px;
+    }
+    
+    .bnymtheme {
+        margin-left: 7px;
+        margin-top: 0px !important;
+        padding: 10px;
+        background-color: #fff;
+    }
+    .subMenuAlign {
+        display: block !important; 
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;        
+    }  
+</style>
+<aside class="ng-scope" id="sidebarMenu">
+    <!-- showOnDesktop -->
+    <div class="row">
+        <div class="col-md-12 ng-hide" ng-show="showSmallLogo">
+            <div class="smallLogo" style="margin-bottom:15px;">
+                <img ng-src="themes/volante/favicon.png" alt="logo" class="logo-default" style="width:30px;margin-left:10px;" src="themes/volante/favicon.png">
+            </div>
+        </div>
+
+        <div class="col-md-8" ng-show="configData.ThemeName">
+            <div class="appLogo coretheme" style="margin-left:7px;" ng-class="{'coretheme': configData.ThemeName != 'bynm','bnymtheme':configData.ThemeName == 'bnym'}">
+                <img ng-src="themes/volante/logo.png" alt="logo" class="logo-default" style="width:145px;" src="themes/volante/logo.png">
+            </div>
+        </div>
+        <!-- <div class="col-md-8" ng-if="configData.ThemeName=='bnym'">
+					<div class="appLogo" style="margin-left:7px;margin-top:0px !important; padding: 10px; background-color: #fff;">
+						<img src="themes/{{configData.ThemeName}}/logo.png" alt="logo" class="logo-default" style="width:145px;">
+					</div>					
+				</div> -->
+        <div class="col-md-4">
+            <li style="text-align: right;padding: 10px 11px;" class="sidebarSideToggle">
+                <a class="sidebar-toggle" data-toggle="offcanvas" role="button" data-ng-click="sideBar(1);">
+                    <i class="fa fa-bars" aria-hidden="true" title="Hide Menu" style="border: 5px solid #5e6b7b;display:inline;margin-right:2px;"></i>
+                </a>
+            </li>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+    <!--<div class="row showOnDesktop" ng-show="showSmallLogo" style="margin-top:10px;">
+                <div class="col-md-12">
+                    <div class="smallLogo">
+                        <img src="themes/{{configData.ThemeName}}/favicon.png" alt="logo" class="logo-default" style="width:30px;margin-left:10px;">
+                    </div>
+                </div>
+            </div>-->
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- sidebar -->
+            <section class="sidebar">
+
+                <!-- <li class="sidebar-search-wrapper">
+            <form class="sidebar-search ng-pristine ng-valid" ng-enter="return false" style="margin: 22px 5px 22px 5px;">
+                <div class="input-group">
+                    <input type="text" class="form-control sidebarSearch" placeholder="Search..." style="pointer-events:none">
+                        <span class="input-group-btn">
+							<i class="fa fa-search" title="Search"></i>
+						</span>
+                </div>
+            </form>
+        </li> -->
+
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 547px;"><ul class="sidebar-menu" style="margin-top: 10px; overflow: hidden; width: auto; height: 547px;">
+                    <!-- ngRepeat: val in sidebarVal --><li class="treeview menuli ng-scope open" id="Home" data-ng-repeat="val in sidebarVal">
+                        <a ng-click="parentMenu($event)" title="Inicio " class="ParentMenu sidebarSubMenuSelected">
+                            <i class="fa fa fa-home"></i>
+                            <!-- <span class="mName" translate>{{'Sidebar.'+ (val.ParentName |specialCharactersRemove |removeSpace)}}</span> -->
+                            <span class="mName ng-binding">Inicio </span>
+
+                            <!-- ngIf: val.subMenu.length --><i ng-if="val.subMenu.length" style="position:relative;top:3px;right:0;text-align: center;margin: 0;font-size:10px;" class="fa fa-minus"></i><!-- end ngIf: val.subMenu.length -->
+                        </a>
+
+                        <!-- ngIf: val.subMenu.length --><ul class="sidebarSubMenu ng-scope" ng-if="val.subMenu.length" style="display: block; overflow: hidden; height: 1.63689px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+                            <!-- ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope sideMenuSelected" id="HomePage" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Perfil de inicio">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Perfil de inicio</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="MyProfile" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Mi perfil">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Mi perfil</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="MyDashboard" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Mi tablero">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Mi tablero</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu -->
+                        </ul><!-- end ngIf: val.subMenu.length -->
+                    </li><!-- end ngRepeat: val in sidebarVal --><li class="treeview menuli ng-scope" id="PaymentModule" data-ng-repeat="val in sidebarVal">
+                        <a ng-click="parentMenu($event)" title="Módulo de pago" class="ParentMenu">
+                            <i class="fa fa fa-cog"></i>
+                            <!-- <span class="mName" translate>{{'Sidebar.'+ (val.ParentName |specialCharactersRemove |removeSpace)}}</span> -->
+                            <span class="mName ng-binding">Módulo de pago</span>
+
+                            <!-- ngIf: val.subMenu.length --><i ng-if="val.subMenu.length" style="position:relative;top:3px;right:0;text-align: center;margin: 0;font-size:10px;" class="fa fa-plus"></i><!-- end ngIf: val.subMenu.length -->
+                        </a>
+
+                        <!-- ngIf: val.subMenu.length --><ul class="sidebarSubMenu ng-scope" ng-if="val.subMenu.length">
+                            <!-- ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="PaymentsDashboard" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Tablero de pagos">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Tablero de pagos</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="AllPayments" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Todos los pagos">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Todos los pagos</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="InstructionsDashboard" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Tablero de Instrucciones">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Tablero de Instrucciones</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="ReceivedInstructions" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Instrucciones Recibidas">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Instrucciones Recibidas</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="FileUpload" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Subir archivo">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Subir archivo</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="DistributedInstructions" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Instrucciones distribuidas">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Instrucciones distribuidas</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu -->
+                        </ul><!-- end ngIf: val.subMenu.length -->
+                    </li><!-- end ngRepeat: val in sidebarVal --><li class="treeview menuli ng-scope" id="CyclesModule" data-ng-repeat="val in sidebarVal">
+                        <a ng-click="parentMenu($event)" title="Módulo de Ciclos" class="ParentMenu">
+                            <i class="fa fa fa-cogs"></i>
+                            <!-- <span class="mName" translate>{{'Sidebar.'+ (val.ParentName |specialCharactersRemove |removeSpace)}}</span> -->
+                            <span class="mName ng-binding">Módulo de Ciclos</span>
+
+                            <!-- ngIf: val.subMenu.length --><i ng-if="val.subMenu.length" style="position:relative;top:3px;right:0;text-align: center;margin: 0;font-size:10px;" class="fa fa-plus"></i><!-- end ngIf: val.subMenu.length -->
+                        </a>
+
+                        <!-- ngIf: val.subMenu.length --><ul class="sidebarSubMenu ng-scope" ng-if="val.subMenu.length">
+                            <!-- ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="ClosingCycle" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Cierre de Ciclo">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Cierre de Ciclo</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu -->
+                        </ul><!-- end ngIf: val.subMenu.length -->
+                    </li><!-- end ngRepeat: val in sidebarVal --><li class="treeview menuli ng-scope" id="SanctionModule" data-ng-repeat="val in sidebarVal">
+                        <a ng-click="parentMenu($event)" title="Módulo de sanciones" class="ParentMenu">
+                            <i class="fa fas fa-cog"></i>
+                            <!-- <span class="mName" translate>{{'Sidebar.'+ (val.ParentName |specialCharactersRemove |removeSpace)}}</span> -->
+                            <span class="mName ng-binding">Módulo de sanciones</span>
+
+                            <!-- ngIf: val.subMenu.length --><i ng-if="val.subMenu.length" style="position:relative;top:3px;right:0;text-align: center;margin: 0;font-size:10px;" class="fa fa-plus"></i><!-- end ngIf: val.subMenu.length -->
+                        </a>
+
+                        <!-- ngIf: val.subMenu.length --><ul class="sidebarSubMenu ng-scope" ng-if="val.subMenu.length">
+                            <!-- ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="SanctionCalculatorByCycle" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Calculadora Ciclo 5">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Calculadora Ciclo 5</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu -->
+                        </ul><!-- end ngIf: val.subMenu.length -->
+                    </li><!-- end ngRepeat: val in sidebarVal --><li class="treeview menuli ng-scope" id="ClearingReport" data-ng-repeat="val in sidebarVal">
+                        <a ng-click="parentMenu($event)" title="Reportes de compensación" class="ParentMenu">
+                            <i class="fa fa-file"></i>
+                            <!-- <span class="mName" translate>{{'Sidebar.'+ (val.ParentName |specialCharactersRemove |removeSpace)}}</span> -->
+                            <span class="mName ng-binding">Reportes de compensación</span>
+
+                            <!-- ngIf: val.subMenu.length --><i ng-if="val.subMenu.length" style="position:relative;top:3px;right:0;text-align: center;margin: 0;font-size:10px;" class="fa fa-plus"></i><!-- end ngIf: val.subMenu.length -->
+                        </a>
+
+                        <!-- ngIf: val.subMenu.length --><ul class="sidebarSubMenu ng-scope" ng-if="val.subMenu.length">
+                            <!-- ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="BankWorksheet" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Planilla de compensación">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Planilla de compensación</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu -->
+                        </ul><!-- end ngIf: val.subMenu.length -->
+                    </li><!-- end ngRepeat: val in sidebarVal --><li class="treeview menuli ng-scope" id="ReferenceData" data-ng-repeat="val in sidebarVal">
+                        <a ng-click="parentMenu($event)" title="Dato de referencia" class="ParentMenu">
+                            <i class="fa fa-building-o"></i>
+                            <!-- <span class="mName" translate>{{'Sidebar.'+ (val.ParentName |specialCharactersRemove |removeSpace)}}</span> -->
+                            <span class="mName ng-binding">Dato de referencia</span>
+
+                            <!-- ngIf: val.subMenu.length --><i ng-if="val.subMenu.length" style="position:relative;top:3px;right:0;text-align: center;margin: 0;font-size:10px;" class="fa fa-plus"></i><!-- end ngIf: val.subMenu.length -->
+                        </a>
+
+                        <!-- ngIf: val.subMenu.length --><ul class="sidebarSubMenu ng-scope" ng-if="val.subMenu.length">
+                            <!-- ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="Currency" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Divisa">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Divisa</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu -->
+                        </ul><!-- end ngIf: val.subMenu.length -->
+                    </li><!-- end ngRepeat: val in sidebarVal --><li class="treeview menuli ng-scope" id="OnboardingData" data-ng-repeat="val in sidebarVal">
+                        <a ng-click="parentMenu($event)" title="Vinculación de entidades" class="ParentMenu">
+                            <i class="fa fa-crosshairs"></i>
+                            <!-- <span class="mName" translate>{{'Sidebar.'+ (val.ParentName |specialCharactersRemove |removeSpace)}}</span> -->
+                            <span class="mName ng-binding">Vinculación de entidades</span>
+
+                            <!-- ngIf: val.subMenu.length --><i ng-if="val.subMenu.length" style="position:relative;top:3px;right:0;text-align: center;margin: 0;font-size:10px;" class="fa fa-plus"></i><!-- end ngIf: val.subMenu.length -->
+                        </a>
+
+                        <!-- ngIf: val.subMenu.length --><ul class="sidebarSubMenu ng-scope" ng-if="val.subMenu.length">
+                            <!-- ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="Party" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Entidades">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Entidades</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu -->
+                        </ul><!-- end ngIf: val.subMenu.length -->
+                    </li><!-- end ngRepeat: val in sidebarVal --><li class="treeview menuli ng-scope" id="Addon" data-ng-repeat="val in sidebarVal">
+                        <a ng-click="parentMenu($event)" title="Catálogos" class="ParentMenu">
+                            <i class="fa fa-building-o"></i>
+                            <!-- <span class="mName" translate>{{'Sidebar.'+ (val.ParentName |specialCharactersRemove |removeSpace)}}</span> -->
+                            <span class="mName ng-binding">Catálogos</span>
+
+                            <!-- ngIf: val.subMenu.length --><i ng-if="val.subMenu.length" style="position:relative;top:3px;right:0;text-align: center;margin: 0;font-size:10px;" class="fa fa-plus"></i><!-- end ngIf: val.subMenu.length -->
+                        </a>
+
+                        <!-- ngIf: val.subMenu.length --><ul class="sidebarSubMenu ng-scope" ng-if="val.subMenu.length">
+                            <!-- ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="VPHTransactionTypes" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Tipos de transacciones">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Tipos de transacciones</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="Limits" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Límites">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Límites</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="LimitPerBank" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Límite por banco">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Límite por banco</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="RegisterAccounts" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Inscripción de cuentas">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Inscripción de cuentas</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu --><li class="treeview subMenuli ng-scope" id="VPHCYCLEEXTENSION" data-ng-repeat="subVal in val.subMenu">
+
+                                <span class="triangleLeft"></span>
+                                <a ng-click="gotoPage($event,val,subVal)" title="Solicitud tiempo extra">
+                                    <!-- ngIf: showSmallLogo -->
+
+                                    <!-- <span translate>{{'Sidebar.'+(subVal.Name|specialCharactersRemove|removeSpace)}}</span> -->
+                                    <span class="subMenuAlign ng-binding" style="white-space: nowrap !important;">Solicitud tiempo extra</span>
+
+                                </a>
+                            </li><!-- end ngRepeat: subVal in val.subMenu -->
+                        </ul><!-- end ngIf: val.subMenu.length -->
+                    </li><!-- end ngRepeat: val in sidebarVal -->
+                </ul><div class="slimScrollBar" style="background: rgb(221, 221, 221); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 547px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+            </section>
+        </div>
+    </div>
+</aside>
+<script class="ng-scope">
+    var mediaQuery = window.matchMedia("(max-width: 991px)");
+
+    if (mediaQuery.matches) {
+        $(function() {
+            $('.sidebar-menu').slimScroll({
+                color: '#ddd',
+                size: '7px',
+                height: '350px',
+                alwaysVisible: true
+            });
+        });
+    } else {
+        $(function() {
+            $('.sidebar-menu').slimScroll({
+                color: '#ddd',
+                size: '7px',
+                height: (configData.ThemeName == 'volante') ? ($(window).outerHeight() - $('.fixedfooter').height() - 50 + 'px') : ($(window).outerHeight() - 150 + 'px'),
+                alwaysVisible: true
+            });
+        });
+    }
+</script></div><!-- end ngIf: !iframeFlag && !pwSet -->
+
+    <div class="content-wrapper" ng-class="{fullwidth: iframeFlag == true}" style="margin-left: 230px;">
+        <!-- uiView: --><div ui-view="" class="fadeUp ng-scope"><style class="ng-scope">
+   
+</style>
+
+<!-- BEGIN PAGE HEADER-->
+
+
+<div class="page-bar breadCrumb ng-scope" ng-controller="activeController">
+    <div class="row">
+        <div class="col-md-6 ">
+            <!-- ngIf: !profileSetup --><ul class="page-breadcrumb ng-scope" ng-if="!profileSetup">
+                <li>
+                    <i class="fa fa-home"></i>
+                    <a href="javascript:void(0);" translate="" class="removeCursor ng-scope">Inicio </a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    <span translate="" class="removeCursor ng-scope">Perfil de inicio</span>
+                </li>
+            </ul><!-- end ngIf: !profileSetup -->
+        </div>
+
+        <div class="col-md-6 headerVals">
+            <!-- ngInclude: 'templates/header/VPheader.html' --><div data-ng-include="'templates/header/VPheader.html'" data-ng-controller="headerCtrl" class="ng-scope"><style class="ng-scope">
+    .dropdown-submenu {
+        position: relative;
+        display: block;
+    }
+    
+    .dropdown-submenu>.dropdown-menu {
+        top: 0;
+        right: 100% !important;
+        margin-top: -6px;
+        margin-left: -1px;
+        -webkit-border-radius: 0 6px 6px 6px;
+        -moz-border-radius: 0 6px 6px 6px;
+        border-radius: 0 6px 6px 6px;
+		left:-10rem; /* 10rem is the min-width of dropdown-menu */
+    }
+    
+    ul.myhead {
+        float: right;
+        margin-right: -0.4rem;
+    }
+    
+    ul.myhead li:hover>ul.dropdown-menu {
+        display: block;
+		position: fixed;
+    }
+    
+    .dropdown>.dropdown-menu:after,
+    .dropdown-toggle>.dropdown-menu:after,
+    .btn-group>.dropdown-menu:after,
+    .dropdown-menu-excel:after {
+        border: none;
+    }
+    
+    .switch-drop {
+        border: none;
+        padding: 0;
+        left: auto;
+    }
+    
+    .switch-drop__list {
+        right: 0;
+        left: auto;
+        border: none;
+        padding: 0;
+    }
+	.navbar-nav .nav-link {
+		padding-right: 15px;
+		padding-left: 15px;
+		color: black;
+	}
+	.scrollDivNote {
+		position: relative; 
+		overflow: hidden; 
+		width: 250px; 
+		height: 280px; 
+		background-color: #f9f9f9;
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	}
+	.dropdown:hover .nav-link  {background-color: #eee;}
+  
+    .dropdown-content :hover a  {
+        color:black !important;      
+     }
+
+    .dropdown-content>li>a {	
+	    border-bottom: none;
+     }
+</style>
+
+
+<!-- <div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="col-xs-9">
+						<div class="appLogo">
+							<img src="themes/{{configData.ThemeName}}/logo.png" alt="logo" class="logo-default">
+						</div>
+					</div>
+					<div class="col-xs-3">
+						<a class="sidebar-toggle headerSideToggle" data-toggle="offcanvas" role="button" data-ng-click="sideBar(1);">
+							<i class="fa fa-bars" aria-hidden="true" style="border: 5px solid #5e6b7b;font-size:14px;"></i>
+						</a>
+				   </div>
+		
+				   
+				</div>  -->
+<div class="col-md-12 col-sm-12 col-xs-12 topMenuIcons ng-scope">
+    <div class="notiIcons">
+        <ul>
+			<a>
+				<!-- ngIf: multilingualData --><i class="fa fa-language ng-scope" aria-hidden="true" ng-if="multilingualData"></i><!-- end ngIf: multilingualData -->
+				<!-- ngIf: multilingualData --><span ng-if="multilingualData" class="ng-scope">
+					<select style="border:none;" class="dropdown-toggle namecls ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="userselected" name="Multilingual" id="multilingual" ng-change="onChangeDataSelect(userselected)">
+					<!-- <option value="">--Select--</option> -->
+					<!-- ngRepeat: Data in multilingualData.supported_languages --><option ng-repeat="Data in multilingualData.supported_languages" value="en_US" class="ng-binding ng-scope">English</option><!-- end ngRepeat: Data in multilingualData.supported_languages --><option ng-repeat="Data in multilingualData.supported_languages" value="es_ES" class="ng-binding ng-scope" selected="selected">Spanish</option><!-- end ngRepeat: Data in multilingualData.supported_languages -->
+					
+				</select></span><!-- end ngIf: multilingualData -->   
+			</a>
+            <li class="dropdown headDropdownList">
+                <a class="anchor">
+                    <i class="fa fa-bell-o" aria-hidden="true"></i>
+                    <span class="badge badge-default ng-binding"></span>
+                </a>
+                <ul class="dropdown-content ulbackground dropdownPosition1">
+
+                    <li class="external1">
+                        <div class="bold1 ng-binding"> pending notifications</div>
+
+                    </li>
+                    <div class="scrollDivNote">
+                        <!-- ngRepeat: Nofitiocations in Notifi.NotifyContent -->
+
+                    </div>
+                    <li class="view-list">
+                        <!-- ngIf: NotifCount -->
+                    </li>
+                </ul>
+
+            </li>
+
+            <!--<li class="dropdown headDropdownList">
+						<a class="anchor">
+						  <i class="fa fa-envelope" aria-hidden="true"></i>
+							<span class="badge badge-default ng-binding">2</span>
+						</a>
+						<ul class="dropdown-content ulbackground dropdownPosition2">
+							<li class="external1">
+								<div class="bold1">18 pending notifications</div>
+								
+							</li>
+							<div class="scrollDiv">
+							<li class="dropdown-menu-list">
+								
+										<a href="javascript:void(0);">
+										<span class="label label-sm label-icon label-success">
+										<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+										</span>
+										<span class="status">RE:FILE STATUS NOTIFICATION</span>
+										<span class="Ack">
+										 Viewed
+										</span>
+										</a>
+							</li>
+							
+							<li class="dropdown-menu-list">
+								
+										<a href="javascript:void(0);">
+										<span class="label label-sm label-icon label-success">
+										<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+										</span>
+										<span class="status">RE:FILE STATUS NOTIFICATION</span>
+										<span class="Ack">
+										 Viewed
+										</span>
+										</a>
+							</li>
+							
+							</div>
+							<li class="view-list"><div class="bold2">
+								<a href="javascript:void(0);">view all</a>
+								</div>
+							</li>
+							
+							
+							
+						</ul>
+					  </li>-->
+
+            <!--<li class="dropdown headDropdownList">
+						<a class="anchor">
+						   <i class="fa fa-calendar-o" aria-hidden="true"></i>
+		
+							<span class="badge badge-default ng-binding">3</span>
+						</a>
+		
+		
+						<ul class="dropdown-content ulbackground dropdownPosition3">
+							<li class="external1">
+								<div class="bold1">12 pending notifications</div>
+								
+							</li>
+							<div class="scrollDiv">
+							<li class="dropdown-menu-list">
+								
+										<a href="javascript:void(0);">
+										<span class="label label-sm label-icon label-success">
+										<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+										</span>
+										<span class="status">RE:FILE STATUS NOTIFICATION</span>
+										<span class="Ack">
+										 Viewed
+										</span>
+										</a>
+							</li>
+							<li class="dropdown-menu-list">
+								
+										<a href="javascript:void(0);">
+										<span class="label label-sm label-icon label-success">
+										<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+										</span>
+										<span class="status">RE:FILE STATUS NOTIFICATION</span>
+										<span class="Ack">
+										 Viewed
+										</span>
+										</a>
+							</li>
+							<li class="dropdown-menu-list">
+								
+										<a href="javascript:void(0);">
+										<span class="label label-sm label-icon label-success">
+										<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+										</span>
+										<span class="status">RE:FILE STATUS NOTIFICATION</span>
+										<span class="Ack">
+										 Viewed
+										</span>
+										</a>
+							</li>
+							</div>
+							<li class="view-list"><div class="bold2">
+								<a href="javascript:void(0);">view all</a>
+								</div>
+							</li>
+						</ul>
+					  </li>-->
+
+
+            	<ul class="nav navbar-nav myhead">        
+         
+				<div class="dropdown">
+					<a class="nav-link"><img alt="" class="img-circle userImg" src="themes/images/profile.png">
+						<span class="namecls ng-binding">adminOperatorEV@bancolombia.com.co</span> <i class="fa fa-angle-down" style="border: none !important;"></i></a>
+				
+						
+					<div class="dropdown-content" style="margin-right: -0.8rem;">
+                        <li>
+						<a href="#/app/myprofile" class="ng-binding">&nbsp;
+							<i class="fa fa-user-o" aria-hidden="true"></i>Mi perfil</a>
+						
+                        </li>
+                        <!-- ngIf: RoleList.length --><li class="dropdown dropdown-submenu dropright ng-scope" ng-if="RoleList.length"><a href="javascript:void(0);" class="ng-binding"><i class="fa fa-user-o" aria-hidden="true" style="padding-left: 0.5rem;"></i>&nbsp; Cambiar rol<i class="fa fa-angle-right"></i></a>
+							<ul class="dropdown-menu switch-drop dataGroup" style="float:left;position: absolute;">
+								<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto;"><div class="scrollUser2" style="max-height: 200px; font-size: small; overflow: hidden; width: auto;">
+									<!-- ngRepeat: roles in RoleList --><li ng-repeat="roles in RoleList" id="FEAdminOperator" class="ng-scope">
+										<a href="javascript:void(0);" style="color:#555;" ng-click="switchRole(roles.actualvalue, $index,$event)" class="ng-binding">
+											AdminOperator(FE_AdminOperator) 
+										</a>
+									</li><!-- end ngRepeat: roles in RoleList -->
+								</div><div class="slimScrollBar" style="background: rgb(221, 221, 221); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>						
+							</ul>
+						</li><!-- end ngIf: RoleList.length -->
+                        <li>
+						<a href="javascript:void(0);" ng-click="logout()" class="ng-binding">&nbsp;
+							<i class="fa fa-lock" aria-hidden="true"></i> Cerrar sesión
+						</a>
+                    </li>
+					</div>
+				</div>		  
+			</ul>
+            <!-- <li class="dropdown login headDropdownList"></li>-->
+        </ul>
+    </div>
+    <!--  </div> -->
+</div>
+
+<script class="ng-scope">
+    $(document).ready(function() {
+        $(function() {
+            $('.scrollDiv').slimScroll({
+                color: '#ddd',
+                size: '7px',
+                height: '280px',
+                alwaysVisible: true
+            });
+            $('.scrollUser2').slimScroll({
+                color: '#ddd',
+                size: '7px',
+                height: '',
+                alwaysVisible: true
+            });
+        });
+    });
+
+    /*if (document.documentElement.clientWidth < 767 && document.documentElement.clientWidth >= 360) {
+    	  $(".dropdownPosition1").css("left","-75px");
+    	  $(".dropdownPosition2").css("left","-110px");
+    	  $(".dropdownPosition3").css("left","-145px");
+    	}
+    	else if(document.documentElement.clientWidth < 360){
+    	  $(".dropdownPosition1").css("left","-38px");
+    	  $(".dropdownPosition2").css("left","-88px");
+    	  $(".dropdownPosition3").css("left","-135px");
+    	}
+    	else if(document.documentElement.clientWidth > 767 && document.documentElement.clientWidth <= 1200){
+    	  $(".dropdownPosition1").css("left","-140px");
+    	  $(".dropdownPosition2").css("left","-125px");
+    	  $(".dropdownPosition3").css("left","-150px");
+    	}*/
+</script></div>
+        </div>
+    </div>
+</div>
+
+<div class="contentContainer ng-scope">
+    <div class="pull-right font-weight: bold">
+        <span id="clock" class="clock custmclock"></span>
+    </div>
+ 
+    <div class="pageTitle tab-content alertWidthonResize">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="title__container" style="text-align: center;font-weight: bold;">
+                    <h2 style="color: #00b7ff;" translate="" class="ng-scope">Bienvenido a ACH Colombia</h2>
+                    <p class="ng-binding">adminOperatorEV adminOperatorEV</p>
+                    <p class="ng-binding">BANCOLOMBIA</p>
+                 <p class="ng-binding"> <span translate="" class="ng-scope">Su anterior conexión ocurrió en la fecha</span>:18/11/21 15:41:00</p>
+                   <!-- <p > <span translate>MyProfile.Version</span>: {{homepage.Version}}</p> -->
+                 
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- BEGIN PAGE CONTENT-->
+  
+    <!-- ngRepeat: alert in alerts -->
+
+
+        <div class="col-md-12">
+        
+      <div class="countbar-title">
+        <div style="font-weight:bold;text-align: center;background: #cad5eb;">Horarios de Procesos en ACH Colombia</div>
+
+        <div class="listView FixHead dataGroupsScroll" style="overflow-x: auto !important; max-height: 318.24px;">
+            <table class="table table-bordered smallTable floatThead  maintable">
+                
+                <thead>
+                    <tr style="text-align: center;">
+                       
+                        <!-- ngRepeat: (header,value) in homepage.CycleInfo[0] --><th style="font-weight:bold;" ng-repeat="(header,value) in homepage.CycleInfo[0]" class="ng-binding ng-scope">Ciclo</th><!-- end ngRepeat: (header,value) in homepage.CycleInfo[0] --><th style="font-weight:bold;" ng-repeat="(header,value) in homepage.CycleInfo[0]" class="ng-binding ng-scope">Inicio Proceso</th><!-- end ngRepeat: (header,value) in homepage.CycleInfo[0] --><th style="font-weight:bold;" ng-repeat="(header,value) in homepage.CycleInfo[0]" class="ng-binding ng-scope">Entrega Planillas</th><!-- end ngRepeat: (header,value) in homepage.CycleInfo[0] --><th style="font-weight:bold;" ng-repeat="(header,value) in homepage.CycleInfo[0]" class="ng-binding ng-scope">Entrega Archivos</th><!-- end ngRepeat: (header,value) in homepage.CycleInfo[0] --><th style="font-weight:bold;" ng-repeat="(header,value) in homepage.CycleInfo[0]" class="ng-binding ng-scope">Actividad</th><!-- end ngRepeat: (header,value) in homepage.CycleInfo[0] -->
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ngRepeat: rowdata in homepage.CycleInfo --><tr style="text-align: center;" ng-repeat="rowdata in homepage.CycleInfo" class="ng-scope">
+                         <!-- ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            1
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            09:00:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            09:30:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            10:30:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            Pago Compensacion
+                         </td><!-- end ngRepeat: celldata in rowdata -->
+                     </tr><!-- end ngRepeat: rowdata in homepage.CycleInfo --><tr style="text-align: center;" ng-repeat="rowdata in homepage.CycleInfo" class="ng-scope">
+                         <!-- ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            2
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            11:30:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            12:00:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            13:00:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            Pago Compensacion
+                         </td><!-- end ngRepeat: celldata in rowdata -->
+                     </tr><!-- end ngRepeat: rowdata in homepage.CycleInfo --><tr style="text-align: center;" ng-repeat="rowdata in homepage.CycleInfo" class="ng-scope">
+                         <!-- ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            3
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            14:00:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            14:30:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            15:00:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            Pago Compensacion
+                         </td><!-- end ngRepeat: celldata in rowdata -->
+                     </tr><!-- end ngRepeat: rowdata in homepage.CycleInfo --><tr style="text-align: center;" ng-repeat="rowdata in homepage.CycleInfo" class="ng-scope">
+                         <!-- ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            4
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            16:00:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            16:30:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            17:30:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            Pago Compensacion
+                         </td><!-- end ngRepeat: celldata in rowdata -->
+                     </tr><!-- end ngRepeat: rowdata in homepage.CycleInfo --><tr style="text-align: center;" ng-repeat="rowdata in homepage.CycleInfo" class="ng-scope">
+                         <!-- ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            5
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            18:00:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            18:30:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            19:00:00
+                         </td><!-- end ngRepeat: celldata in rowdata --><td ng-repeat="celldata in rowdata" class="ng-binding ng-scope">
+                            Pago Compensacion
+                         </td><!-- end ngRepeat: celldata in rowdata -->
+                     </tr><!-- end ngRepeat: rowdata in homepage.CycleInfo -->
+        
+           </tbody>
+            </table>
+    
+    </div>
+
+    </div>
+   
+
+   
+</div>
+<!-- END PAGE CONTENT-->
+<script>
+    $(document).ready(function() {
+
+        $('[data-toggle-second=tooltip]').tooltip({ trigger: "hover" });
+       
+        setTimeout(function() {
+            $('.input-group-text').on('click focus', function(e) {
+                $(this).prev().focus().click()
+            });
+        }, 1000)
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('[data-toggle="popover"]').popover();
+    })
+
+    $('body').on('click', function(e) {
+        $('[data-toggle="popover"]').each(function() {
+            //the 'is' for buttons that trigger popups
+            //the 'has' for icons within a button that triggers a popup
+            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target)
+                .length === 0) {
+                $(this).popover('hide');
+            }
+        });
+    });
+
+   
+</script>
+</div></div>
+    </div>
+
+    <!-- ngIf: !iframeFlag --><!-- ngInclude: footerPath --><div ng-include="footerPath" data-ng-controller="footerCtrl" class="main-footer newvisiblefooter ng-scope" ng-if="!iframeFlag" ng-style="(currThemeVal == 'bnym' || userPWReset == 'NotSet') ? {'margin-left': '0'}  : {'margin-left': '230px'}" style="margin-left: 230px;"><footer class="fixedfooter newfooter ng-scope" style="font-size:10px">
+    <div class="pull-right clockCls" style="margin-right: 225px;">
+        <span class="footertext1 ng-binding">Version: c2.26.0</span>
+        <span id="spaceid"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+        <span id="clock" class="clock custmclock" style="color: #98a6ba !important;"></span>
+    </div>
+    <div>
+        <span class="footertext2 ng-binding">2021 © VolPay, Volante Technologies, Inc
+        </span>
+        <span class="footertext2"> | ACH Colombia Transv. 23 No. 97-73 Piso 3 Bogotá Tels. (1)593 8300 / (1)743 8300 || Somos Vigilados por la Superintendencia Financiera de Colombia.
+        </span>
+    </div>
+</footer></div><!-- end ngIf: !iframeFlag -->
+
+    <div style="clear:both"></div>
+    <script type="text/ng-template" id="warning-dialog.html">
+        <div class="modal-content">
+            <div class="modal-header modal-header-warning">
+
+                <h4 class="modal-title">You're Idle. Do Something!</h4>
+            </div>
+            <div class="modal-body" idle-countdown="countdown" ng-init="countdown=5">
+                You'll be logged out in <span class="badge badge-warning">{{countdown}}</span> second(s).
+                <div class="progress progress-striped" style="margin-top:5px">
+                    <div class="progress-bar progress-bar-warning" ng-style="{width: countdown*20+'%'}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="timedout-dialog.html">
+
+        <div class="modal-content">
+            <div class="modal-header modal-header-dander">
+                <h4 class="modal-title">You've Timed Out!</h4>
+            </div>
+            <div class="modal-body">
+                <p>You were idle too long. Please login again.</p>
+            </div>
+
+        </div>
+    </script>
+
+</div></div>
+
+    <!-- ngIf: Log_Footer == 'visible' -->
+
+    <div ng-controller="RefreshController" style="display:block !important;height:auto;position:fixed;bottom:0;width:100%;" class="ng-scope"> </div>
+
+    <!-- Script injection -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Latest version -->
+    <!-- jQuery UI-->
+    <script src="lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
+
+    <!-- <script src="lib/bootstrap/bootstrap-v3.4.0.min.js"></script> -->
+    <script src="lib/bootstrap-4.6.0/popper.min.js"></script>
+    <script src="lib/bootstrap-4.6.0/js/bootstrap.min.js"></script>
+    
+    <script src="lib/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+
+    <script src="lib/bootstrap-datetimepicker/js/moment.js"></script>
+    <script src="lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+
+     <script src="lib/angular/angular-1.8.2.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular-sanitize.min.js"></script>
+    <script src="lib/angular/angular-touch.min.js"></script>
+    <script src="lib/angular/angular-idle.min.js"></script>
+
+
+    <script src="lib/angular/angular-ui-router-min.js"></script>
+    <script src="lib/angular/ui-bootstrap-tpls.min.js"></script>
+    <script src="lib/angular/ocLazyLoad.min.js"></script>
+
+    <script src="lib/d3charts/d3.min.js"></script>
+    <script src="lib/d3charts/nv.d3.js"></script>
+    <script src="lib/d3charts/stream_layers.js"></script>
+
+    <script src="lib/iso-currency/dist/isoCurrency.js"></script>
+
+    <script src="lib/angulartranslate/angular-cookies.js"></script>
+    <script src="lib/angulartranslate/angular-translate.min.js"></script>
+    <script src="lib/angulartranslate/angular-translate-storage-cookie.min.js"></script>
+    <script src="lib/angulartranslate/angular-translate-loader-url.min.js"></script>
+    <script src="lib/angulartranslate/angular-translate-interpolation-messageformat.min.js"></script>
+    <script src="lib/angulartranslate/angular-translate-loader-partial.min.js"></script>
+    <script src="lib/angulartranslate/angular-translate-handler-log.min.js"></script>
+    <script src="lib/angulartranslate/angular-translate-storage-local.min.js"></script>
+    <script src="lib/angulartranslate/angular-translate-loader-static-files.min.js"></script>
+
+    <script src="lib/export-files/angular-file-saver.bundle.js"></script>
+
+    <script src="lib/CryptoJS_v3_1_2/pbkdf2.js" type="text/javascript"></script>
+    <script src="lib/CryptoJS_v3_1_2/sha256.js" type="text/javascript"></script>
+    <script src="lib/CryptoJS_v3_1_2/aes.js" type="text/javascript"></script>
+    <script src="lib/CryptoJS_v3_1_2/hmac-sha256.js" type="text/javascript"></script>
+
+    <script src="lib/js-beautify/web/third-party/codemirror/lib/codemirror.js"></script>
+    <script src="lib/js-beautify/web/third-party/codemirror/mode/javascript/javascript.js"></script>
+    <script src="lib/js-beautify/js/lib/beautify-css.js"></script>
+
+    <script src="lib/js-beautify/js/lib/beautify.js"></script>
+    <script src="lib/js-beautify/js/lib/beautify-css.js"></script>
+    <script src="lib/js-beautify/js/lib/beautify-html.js"></script>
+    <script src="lib/js-beautify/js/test/sanitytest.js"></script>
+
+    <script src="lib/volante-sankey.js"></script>
+    <script src="lib/underscore-min.js"></script>
+
+    <script src="lib/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="lib/floatThead/jquery.floatThead.min.js"></script>
+
+    <script src="lib/select2_angular/select2.min.js"></script>
+    <script src="lib/xmltojson/xml2json.min.js"></script>
+
+    <script src="lib/moment/moment.min.js"></script>
+    <script src="lib/moment/moment-with-locales.min.js"></script>
+    <script src="lib/moment/moment-timezone-with-data.js"></script>
+    <!-- <script src="lib/moment/moment-timezone-with-data.js"></script>  Need to check and remove -->
+
+    <script src="templates/volpay/VPapp.js"></script>
+    <script src="templates/volpay/services/VPservice.js"></script>
+    <script src="templates/volpay/services/dashboardService.js"></script>
+    <script src="templates/volpay/services/customDirectories.js"></script>
+    <script src="templates/volpay/js/VPstatejs.js"></script>
+    <script src="templates/volpay/js/VPlayoutjs.js"></script>
+    <script src="templates/footer/VPfooterCtrl.js"></script>
+
+
+
+</body></html>

@@ -1,1 +1,0 @@
-gradle clean test --tests *com.achcolombia.pruebas.runners.LoginPaginaPrincipal aggregate & cd target/site/serenity & index.html

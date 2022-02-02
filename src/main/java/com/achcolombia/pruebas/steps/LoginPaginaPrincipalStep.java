@@ -8,8 +8,8 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import java.io.IOException;
-import java.awt.*;
 
 
 public class LoginPaginaPrincipalStep {
@@ -20,16 +20,30 @@ public class LoginPaginaPrincipalStep {
     private static final String NOMBRE_EXCEL="Datos.xlsx";
     private static final String NOMBRE_HOJA="Usuario";
 
+
     @Step
     public void openBrowser(){
         achPaginaPpalPageObject.open();
     }
 
     @Step
-    public void ingresarUsuario () throws IOException {
-        achPaginaPpalPageObject.getDriver().findElement(achPaginaPpalPageObject.getInpUsuario()).sendKeys(excelDatos.obtenerDatos(NOMBRE_EXCEL,NOMBRE_HOJA,1,0));
+    public void selecionarEntidad(){
 
+        Select lista = new Select(achPaginaPpalPageObject.getDriver().findElement(achPaginaPpalPageObject.getSelect()));
+        lista.selectByIndex(1);
     }
+
+    @Step
+    public void btnLogin(){
+        achPaginaPpalPageObject.getDriver().findElement(achPaginaPpalPageObject.getBtnLogin()).click();
+    }
+
+    @Step
+    public void ingresarUsuario ()throws IOException {
+        achPaginaPpalPageObject.getDriver().findElement(achPaginaPpalPageObject.getInpUsuario()).click();
+        achPaginaPpalPageObject.getDriver().findElement(achPaginaPpalPageObject.getInpUsuario()).sendKeys(excelDatos.obtenerDatos(NOMBRE_EXCEL,NOMBRE_HOJA,1, 0));
+
+            }
 
     @Step
     public void ingresarClave () throws IOException {
@@ -40,17 +54,6 @@ public class LoginPaginaPrincipalStep {
     public void clikBotonIngreso(){
         achPaginaPpalPageObject.getDriver().findElement(achPaginaPpalPageObject.getBtnIngresar()).click();
 
-    }
-
-    @Step
-
-    public void clickLogOut(){
-        achPaginaPpalPageObject.getDriver().findElement(achPaginaPpalPageObject.getBtnLogOut()).click();
-    }
-
-    @Step
-    public void clicOperador(){
-        achPaginaPpalPageObject.getDriver().findElement(achPaginaPpalPageObject.getTxtOperador()).click();
     }
 
     @Step

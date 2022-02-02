@@ -14,7 +14,6 @@ public class LoginPaginaPrincipalStepDefinitions {
     LoginPaginaPrincipalStep loginPaginaPrincipalStep;
 
 
-
     @Dado("^que el usuario se encuentre en la página web$")
     public void queElUsuarioSeEncuentreEnLaPáginaWeb() {
         loginPaginaPrincipalStep.openBrowser();
@@ -24,6 +23,8 @@ public class LoginPaginaPrincipalStepDefinitions {
 
     @Cuando("^ingresa sus credenciales$")
     public void ingresaSusCredenciales() throws IOException {
+        loginPaginaPrincipalStep.selecionarEntidad();
+        loginPaginaPrincipalStep.btnLogin();
         loginPaginaPrincipalStep.ingresarUsuario();
         loginPaginaPrincipalStep.ingresarClave();
         loginPaginaPrincipalStep.clikBotonIngreso();
@@ -34,15 +35,16 @@ public class LoginPaginaPrincipalStepDefinitions {
     public void seVisualizaElPanelPrincipal() {
         loginPaginaPrincipalStep.validarIngresoUsuario();
 
-
     }
 
     @After
-    public void cerrarSesionUsuario(){
+    public void cerrarSesionUsuario() {
         loginPaginaPrincipalStep.cerrarSesion();
     }
-
-
-
-
 }
+
+
+
+
+
+
